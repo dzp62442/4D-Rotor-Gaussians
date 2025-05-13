@@ -49,10 +49,13 @@ Install other packages including PyTorch with CUDA (this repo has been tested wi
 For CUDA 11.8:
 
 ```bash
-pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 matplotlib scikit-image --extra-index-url https://download.pytorch.org/whl/cu118
 
 conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
+export CXX=/usr/bin/g++-9  # For 3090 Server
+export CC=/usr/bin/gcc-9  # For 3090 Server
 pip install ninja git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
+pip install -U 'git+https://github.com/facebookresearch/fvcore'
 pip install --no-index --no-cache-dir pytorch3d -f https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu118_pyt200/download.html
 pip install --upgrade pip setuptools
 ```
