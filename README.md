@@ -51,9 +51,9 @@ For CUDA 11.8:
 ```bash
 pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 matplotlib scikit-image --extra-index-url https://download.pytorch.org/whl/cu118
 
-conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
-export CXX=/usr/bin/g++-9  # For 3090 Server
-export CC=/usr/bin/gcc-9  # For 3090 Server
+conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit  # 已安装系统 CUDA 则不需要再重复安装
+export CXX=/usr/bin/g++-9  # 3090服务器
+export CC=/usr/bin/gcc-9  # 3090 服务器
 pip install ninja git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
 pip install -U 'git+https://github.com/facebookresearch/fvcore'
 pip install --no-index --no-cache-dir pytorch3d -f https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu118_pyt200/download.html
@@ -79,7 +79,9 @@ If you have successfully reached here, you are ready to run the code!
 The dataset provided in [D-NeRF](https://github.com/albertpumarola/D-NeRF) is used. You can download the dataset from [dropbox](https://www.dropbox.com/s/0bf6fl0ye2vz3vr/data.zip?dl=0) at `$data_root$/dnerf`.
 ### Realistic scenes from N3V Dataset (i.e. Plenoptic Video Dataset in our paper):
 Download the [Neural 3D Video dataset](https://github.com/facebookresearch/Neural_3D_Video) and preprocess the raw video by executing:
-```
+```bash
+conda install -c conda-forge colmap  # 无 sudo 权限安装 colmap
+export QT_QPA_PLATFORM=offscreen
 python scripts/n3v2blender.py $data_root$/N3V/$scene_name$
 ```
 ## 3. Training
