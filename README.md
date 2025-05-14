@@ -80,8 +80,9 @@ The dataset provided in [D-NeRF](https://github.com/albertpumarola/D-NeRF) is us
 ### Realistic scenes from N3V Dataset (i.e. Plenoptic Video Dataset in our paper):
 Download the [Neural 3D Video dataset](https://github.com/facebookresearch/Neural_3D_Video) and preprocess the raw video by executing:
 ```bash
-conda install -c conda-forge colmap  # 无 sudo 权限安装 colmap
+conda install -c conda-forge colmap libglvnd-glx-cos7-x86_64  # 无 sudo 权限安装 colmap
 export QT_QPA_PLATFORM=offscreen
+export CUDA_VISIBLE_DEVICES=6
 python scripts/n3v2blender.py $data_root$/N3V/$scene_name$
 ```
 ## 3. Training
